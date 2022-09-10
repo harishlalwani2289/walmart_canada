@@ -1,9 +1,9 @@
-package com.file.FileDemo.controller;
+package com.file.filedemo.controller;
 
-import com.file.FileDemo.domain.FileDeleteResponse;
-import com.file.FileDemo.domain.FileResponse;
-import com.file.FileDemo.domain.ListFileResponse;
-import com.file.FileDemo.services.FileService;
+import com.file.filedemo.domain.FileDeleteResponse;
+import com.file.filedemo.domain.FileResponse;
+import com.file.filedemo.domain.ListFileResponse;
+import com.file.filedemo.services.FileService;
 import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;

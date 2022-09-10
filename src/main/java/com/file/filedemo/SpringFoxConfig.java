@@ -1,4 +1,4 @@
-package com.file.FileDemo;
+package com.file.filedemo;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

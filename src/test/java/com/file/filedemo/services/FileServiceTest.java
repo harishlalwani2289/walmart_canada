@@ -1,11 +1,15 @@
-package com.file.FileDemo.services;
+package com.file.filedemo.services;
 
-import com.file.FileDemo.domain.FileDeleteResponse;
+import com.file.filedemo.domain.FileDeleteResponse;
+import com.file.filedemo.entities.UserEntity;
+import com.file.filedemo.repositories.UserRepository;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
@@ -34,6 +38,9 @@ class FileServiceTest {
     @Value("${file.path}")
     String pathToUploadFolder;
 
+    @Autowired
+    UserRepository userRepository;
+
     @AfterEach
     public void deleteFilesInTestUploadDir() throws IOException {
 
@@ -57,6 +64,9 @@ class FileServiceTest {
                 FileUtils.readFileToString(Arrays.stream(files)
                         .filter(f -> f.getName().equals("testFile1.png"))
                         .collect(Collectors.toList()).get(0), "utf-8"));
+
+        userRepository.save(new UserEntity(123L, "Harish"));
+
     }
 
     @Test

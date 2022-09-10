@@ -1,6 +1,6 @@
-package com.file.FileDemo.services;
+package com.file.filedemo.services;
 
-import com.file.FileDemo.domain.FileDeleteResponse;
+import com.file.filedemo.domain.FileDeleteResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
-package com.file.FileDemo.services;
+package com.file.filedemo.services;
 
-import com.file.FileDemo.domain.FileDeleteResponse;
+import com.file.filedemo.domain.FileDeleteResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,4 +1,4 @@
-package com.file.FileDemo.controller;
+package com.file.filedemo.controller;
 
 
 import org.apache.commons.io.FileUtils;

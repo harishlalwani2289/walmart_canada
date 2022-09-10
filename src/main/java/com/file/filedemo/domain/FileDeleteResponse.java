@@ -1,4 +1,4 @@
-package com.file.FileDemo.domain;
+package com.file.filedemo.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

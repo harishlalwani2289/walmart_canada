@@ -1,4 +1,4 @@
-package com.file.FileDemo.domain;
+package com.file.filedemo.domain;
 
 public class FileResponse {
     String fileNames;
