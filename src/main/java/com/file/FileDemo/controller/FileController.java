@@ -113,7 +113,7 @@ public class FileController {
         String[] fileNames = fileService.listFiles(path);
         List<ListFileResponse> listFileResponses = Arrays.stream(fileService.listFiles(path)).map(fileName -> new ListFileResponse(fileName,
                 MvcUriComponentsBuilder
-                        .fromMethodName(FileController.class, "downloadFile", fileNames[0], HttpServletResponse.class)
+                        .fromMethodName(FileController.class, "downloadFile", fileName, HttpServletResponse.class)
                         .build().toString())).collect(Collectors.toList());
 
         return new ResponseEntity<>(listFileResponses, HttpStatus.OK);

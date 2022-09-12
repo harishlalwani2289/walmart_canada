@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestPropertySource(properties = {"file.path=testUploadFiles", "spring.servlet.multipart.max-file-size=1024"})
+@TestPropertySource(properties = {"file.path=testUploadFiles"})
 class FileControllerIntegrationTest {
 
     @Autowired
@@ -155,7 +155,7 @@ class FileControllerIntegrationTest {
         MockHttpServletRequestBuilder mockHttpServletRequestBuilder = MockMvcRequestBuilders.get("/files");
         mockMvc.perform(mockHttpServletRequestBuilder).andExpect(status().isOk())
                 .andExpect(content().json("[{\"fileName\":\"testFile2.png\",\"url\":\"http://localhost/files/testFile2.png\"}," +
-                        "{\"fileName\":\"testFile1.png\",\"url\":\"http://localhost/files/testFile2.png\"}]"));
+                        "{\"fileName\":\"testFile1.png\",\"url\":\"http://localhost/files/testFile1.png\"}]"));
     }
 
     @Test
