@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestPropertySource(properties = "file.path=testUploadFiles")
+@TestPropertySource(properties = {"file.path=testUploadFiles", "spring.servlet.multipart.max-file-size=1024"})
 class FileControllerIntegrationTest {
 
     @Autowired
@@ -86,6 +86,24 @@ class FileControllerIntegrationTest {
                 .andExpect(status().is5xxServerError())
                 .andExpect(content().json("{\"fileNames\":\"testFile1.png\",\"message\":\"File with provided name already uploaded\"}"));
     }
+
+//    @Test
+//    public void test_uploadFiles_FileSizeExceedException() throws Exception {
+//
+//
+//        MockMultipartHttpServletRequestBuilder multipartRequest =
+//                MockMvcRequestBuilders.multipart("/files/upload");
+//        // Testing file upload
+//
+//        System.out.println(multipartFiles[0].getSize());
+//        byte[] bytes = new byte[100000];
+//        Arrays.fill(bytes, 0,bytes.length-1, (byte)110);
+//        System.out.println(bytes);
+//        MockMultipartFile multipartFile = new MockMultipartFile("files", "test", "image/jpeg", bytes);
+//        mockMvc.perform(multipartRequest.file(multipartFile))
+////                .andExpect(MockMvcResultMatchers.status().is(HttpStatus.ACCEPTED.value()));
+//                .andExpect(status().is5xxServerError());
+//    }
 
     @Test
     public void test_deleteFiles() throws Exception {
