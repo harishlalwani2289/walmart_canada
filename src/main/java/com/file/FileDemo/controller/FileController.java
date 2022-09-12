@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
@@ -52,6 +53,9 @@ public class FileController {
     @Value("${file.path}")
     private String path;
 
+    @Value("${spring.servlet.multipart.max-file-size}")
+    String maxPermittedSize;
+
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Upload files.")
     public ResponseEntity<FileResponse> uploadFiles(
@@ -80,6 +84,7 @@ public class FileController {
     @GetMapping(value = "/{fileName}")
     @Operation(summary = "Download/View a file.")
     public ResponseEntity<FileResponse> downloadFile(@PathVariable("fileName") @NonNull String fileName, HttpServletResponse response) {
+        log.info("Request received to download file {}", fileName);
         try {
             InputStream inputStream = fileService.downloadFile(path, fileName);
 /*

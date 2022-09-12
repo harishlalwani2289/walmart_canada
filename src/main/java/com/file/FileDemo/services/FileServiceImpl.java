@@ -27,7 +27,9 @@ public class FileServiceImpl implements FileService {
     public String uploadFile(String path, MultipartFile file) throws IOException {
 
         //File name
+        // We can change the file name, for example, including the Date also and user too.
         String fileName = file.getOriginalFilename();
+
         logger.info("Got the file with name {}", fileName);
 
         /* Make the path till file -- Full Path */
@@ -56,7 +58,7 @@ public class FileServiceImpl implements FileService {
         logger.info("File {} is being downloaded", fileName);
         String fullPath = path + File.separator + fileName;
         InputStream inputStream = new FileInputStream(fullPath);
-        logger.info("Successfully created the inout stream {} for the file", inputStream);
+        logger.info("Successfully created the inout stream for the file {}", fileName);
         return inputStream;
     }
 
